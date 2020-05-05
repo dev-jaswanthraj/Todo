@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+</head>
+<body>
+    <h1>TODO FOR EVER ONE</h1>
+    <form action="push" method = POST>
+        {% csrf_token %}
+        <h3>Add you'r todo list</h3>
+        <input type="text" name = 'context'>
+        <input type="submit">
+    </form>
+    {{value}}
+    {%for i in val %}
+        <strong>
+            {{i.content}}
+        </strong>
+        <form action="{% url 'delete' i.id %}" method="POST" style="display: inline;">
+            {% csrf_token%}
+            <input type="submit" value="delete">
+        </form>
+        <br>
+    {% endfor %}
+</body>
+</html>
